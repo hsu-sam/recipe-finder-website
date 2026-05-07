@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* COLORS */
+
+  /* Neutral */
+  --color-green-900: rgb(22, 58, 42);
+  --color-green-600: rgb(57, 88, 82);
+  --color-green-300: rgb(208, 220, 217);
+  --color-green-200: rgb(224, 230, 227);
+  --color-neutral-100: rgb(246, 245, 241);
+  --color-neutral-0: rgb(255, 255, 255);
+
+  /* Orange */
+  --color-orange-500: rgb(254, 159, 107);
+
+  /* Teal */
+  --color-teal-500: rgb(73, 172, 155);
+
+  /* Indigo */
+  --color-indigo-500: rgb(105, 125, 219);
+
+  /* TYPOGRAPHY */
+  --font-nunito: "Nunito";
+
+  /* TEXT PRESETS */
+  --text-preset-1: 4.5rem;
+  --text-preset-1-tablet: 4rem;
+  --text-preset-1-mobile: 3.25rem;
+  --text-preset-2: 3rem;
+  --text-preset-2-mobile: 2.5rem;
+  --text-preset-3: 2rem;
+  --text-preset-4: 1.5rem;
+  --text-preset-5: 1.25rem;
+  --text-preset-7: 1.125rem;
+  --text-preset-8: 1rem;
+  --text-preset-10: 0.875rem;
+
+  /* SPACING */
+  --spacing-0: 0rem;
+  --spacing-025: 2px;
+  --spacing-050: 4px;
+  --spacing-075: 6px;
+  --spacing-100: 8px;
+  --spacing-125: 10px;
+  --spacing-150: 12px;
+  --spacing-200: 16px;
+  --spacing-250: 20px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-800: 64px;
+  --spacing-1000: 80px;
+  --spacing-1200: 96px;
+  --spacing-1400: 112px;
+  --spacing-1600: 128px;
+  --spacing-1800: 140px;
+
+  /* RADIUS */
+  --radius-0: 0px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-full: 999px;
+  --radius-400: 32px;
+  --radius-500: 40px;
+}
+
+body {
+  color: var(--color-green-900);
+  font-size: 16px;
+  font-family: var(--font-nunito);
+  background-color: var(--color-neutral-100);
+}
