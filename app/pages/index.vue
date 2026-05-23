@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from "vue";
 import PatternSquiggle1 from "~/assets/illustrations/PatternSquiggle1.vue";
-import imgLarge from "../assets/images/image-home-hero-large.webp";
-import imgSmall from "../assets/images/image-home-hero-small.webp";
+import imgHomeLarge from "../assets/images/image-home-hero-large.webp";
+import imgHomeSmall from "../assets/images/image-home-hero-small.webp";
+import imgRealLarge from "../assets/images/image-home-real-life-large.webp";
+import imgRealSmall from "../assets/images/image-home-real-life-small.webp";
+import patternKnife from "../assets/illustrations/pattern-knife.svg";
+import patternFork from "../assets/illustrations/pattern-fork.svg";
 
 const features = ref([
   {
@@ -46,7 +50,7 @@ const features = ref([
               </h1>
             </div>
             <p
-              class="text-green-800 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
+              class="text-green-600 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
             >
               Discover eight quick, whole-food recipes that you can cook
               tonight—no processed junk, no guesswork.
@@ -60,19 +64,17 @@ const features = ref([
             </NuxtLink>
           </div>
 
-          <div class="absolute bottom-18 left-0 -z-10 w-screen">
+          <div class="absolute bottom-18 left-0 -z-10 w-full">
             <PatternSquiggle1 class="w-full h-auto opacity-60" />
           </div>
 
           <div class="flex flex-col gap-400 lg:pb-1200">
             <picture class="mx-auto bg-neutral-0 p-2 rounded-8">
-              <source media="(min-width: 43.75em)" :srcset="imgLarge" />
+              <source media="(min-width: 43.75em)" :srcset="imgHomeLarge" />
               <img
                 class="rounded-8"
-                :src="imgSmall"
+                :src="imgHomeSmall"
                 alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
-                width="1080"
-                height="960"
               />
             </picture>
           </div>
@@ -81,15 +83,101 @@ const features = ref([
     </section>
 
     <section>
-      <div class="lg:pt-1200">
-        <h2 class="text-preset-2">What you'll get</h2>
+      <div class="flex flex-col gap-600 lg:max-w-298 lg:mx-auto">
+        <h2 class="text-preset-2 lg:text-center font-bold">What you'll get</h2>
 
-        <div v-for="feature in features" :key="feature.title">
-          <Icon :icon="feature.icon" width="32" height="32" />
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
+        <div
+          class="flex flex-col lg:flex-row gap-300 md:gap-400 lg:items-start lg:justify-center"
+        >
+          <div
+            v-for="feature in features"
+            :key="feature.title"
+            class="flex flex-col gap-300 flex-1"
+          >
+            <div class="bg-neutral-0 px-075 py-050 rounded-4 flex-1 w-fit">
+              <Icon :icon="feature.icon" width="40" height="40" />
+            </div>
+            <h3 class="text-preset-3">{{ feature.title }}</h3>
+            <p class="text-preset-6 text-neutral-600">
+              {{ feature.description }}
+            </p>
+          </div>
         </div>
       </div>
     </section>
+
+    <section>
+      <div
+        class="flex flex-col lg:flex-row lg:items-center gap-600 py-1000 lg:py-1200 lg:max-w-298 lg:mx-auto"
+      >
+        <div class="flex flex-col justify-center gap-300">
+          <h2 class="text-preset-2 font-bold">Built for real life</h2>
+          <p class="text-neutral-600">
+            Cooking shouldn’t be complicated. These recipes come in under
+            <span class="relative inline-block font-bold text-neutral-900">
+              30 Minutes
+              <span
+                class="absolute bottom-[0.35em] -z-10 left-0 w-full h-[0.60em] bg-orange-500 rounded-4"
+              ></span>
+            </span>
+            of active time, fit busy schedules, and taste good enough to repeat.
+          </p>
+          <p class="text-neutral-600">
+            Whether you’re new to the kitchen or just need fresh ideas, we’ve
+            got you covered.
+          </p>
+        </div>
+        <div>
+          <picture class="mx-auto rounded-8">
+            <source media="(min-width: 43.75em)" :srcset="imgRealLarge" />
+            <img
+              class="rounded-16"
+              :src="imgRealSmall"
+              alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="relative bg-neutral-200 py-1200 rounded-16 overflow-hidden">
+        <div
+          class="hidden md:block absolute md:-bottom-15 md:-left-20 lg:top-4 lg:-left-15"
+        >
+          <img
+            :src="patternFork"
+            alt=""
+            class="w-[179px] h-auto md:w-[200px] lg:w-[300px]"
+          />
+        </div>
+        <div class="flex flex-col gap-400 items-center z-10">
+          <div>
+            <h2 class="text-preset-2 font-bold text-center">
+              Ready to cook smarter?
+            </h2>
+            <p class="text-preset-6 text-neutral-600 text-center">
+              Hit the button, pick a recipe, and get dinner on the table—fast.
+            </p>
+          </div>
+          <NuxtLink to="/recipes" class="lg:self-center">
+            <button
+              class="rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 transition-all duration-200 hover:bg-neutral-800 hover:shadow-md active:scale-95 w-49.5 lg:mx-auto text-center"
+            >
+              Browse recipes
+            </button>
+          </NuxtLink>
+        </div>
+        <div
+          class="hidden md:block absolute md:-top-8 md:-right-0 lg:bottom-4 -right-15"
+        >
+          <img
+            :src="patternKnife"
+            alt=""
+            class="w-[179px] h-auto md:w-[180px] lg:w-[300px]"
+          />
+        </div>
+      </div>
+    </footer>
   </div>
 </template>

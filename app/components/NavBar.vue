@@ -20,9 +20,7 @@ const navLinks = [
 </script>
 
 <template>
-  <header
-    class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-100"
-  >
+  <header class="sticky top-0 z-50 bg-neutral-100 border-b border-neutral-200">
     <div class="relative lg:px-800 lg:py-250 px-200 py-150">
       <div class="flex items-center justify-between h-16">
         <!-- Left: Logo -->
@@ -31,7 +29,11 @@ const navLinks = [
           class="flex items-center justify-start shrink-0"
           aria-label="Go to homepage"
         >
-          <img src="/logo.svg" alt="Healthy Recipe Finder" class="h-9" />
+          <img
+            src="/logo.svg"
+            alt="Healthy Recipe Finder"
+            class="h-auto w-[200px] md:w-[260px]"
+          />
         </NuxtLink>
 
         <!-- Center: Desktop Nav Links -->
@@ -106,7 +108,7 @@ const navLinks = [
         <div
           v-if="isOpen"
           id="mobile-menu"
-          class="lg:hidden absolute top-full left-0 right-0 bg-white backdrop-blur-md border-b border-neutral-100 shadow-lg w-85.75 md:min-w-176 mx-auto rounded-8"
+          class="lg:hidden absolute top-full left-0 right-0 bg-neutral-0 backdrop-blur-md border-b border-neutral-100 shadow-lg w-85.75 md:min-w-176 mx-auto rounded-8"
         >
           <nav class="px-100 py-100" aria-label="Mobile navigation">
             <ul class="flex flex-col gap-1" role="list">
