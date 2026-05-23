@@ -5,6 +5,7 @@
   /* COLORS */
 
   /* Neutral */
+  --color-green-950: #293241;
   --color-green-900: rgb(22, 58, 42);
   --color-green-600: rgb(57, 88, 82);
   --color-green-300: rgb(208, 220, 217);
@@ -78,4 +79,12 @@ body {
   font-size: 16px;
   font-family: var(--font-nunito);
   background-color: var(--color-neutral-100);
+}
+
+button {
+  cursor: pointer;
+  color: var(--color-neutral-0);
+  font-family: var(--font-nunito);
+  font-size: var(--text-preset-8);
+  font-weight: 700;
 }
