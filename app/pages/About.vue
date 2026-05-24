@@ -1,12 +1,12 @@
 <script setup>
-import imgMissionLarge from "../assets/images/image-about-our-mission-large.webp";
-import imgMissionSmall from "../assets/images/image-about-our-mission-small.webp";
-import imgPhilosophyLarge from "../assets/images/image-about-beyond-the-plate-large.webp";
-import imgPhilosophySmall from "../assets/images/image-about-beyond-the-plate-small.webp";
-import patternSquiggle2 from "../assets/illustrations/pattern-squiggle-2.svg";
-// import patternSquiggle2 from "~/assets/illustrations/pattern-squiggle-2.svg";
+import patternSquiggle2 from "~/assets/illustrations/pattern-squiggle-2.svg";
 import { ref } from "vue";
-import Icon from "~/components/Icon.vue";
+import Icon from "~/components/ui/Icon.vue";
+
+const imgMissionLarge = "/images/image-about-our-mission-large.webp";
+const imgMissionSmall = "/images/image-about-our-mission-small.webp";
+const imgPhilosophyLarge = "/images/image-about-beyond-the-plate-large.webp";
+const imgPhilosophySmall = "/images/image-about-beyond-the-plate-small.webp";
 
 const QAs = ref([
   {

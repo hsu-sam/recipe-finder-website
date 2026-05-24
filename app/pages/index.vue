@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from "vue";
 import PatternSquiggle1 from "~/assets/illustrations/PatternSquiggle1.vue";
-import imgHomeLarge from "../assets/images/image-home-hero-large.webp";
-import imgHomeSmall from "../assets/images/image-home-hero-small.webp";
-import imgRealLarge from "../assets/images/image-home-real-life-large.webp";
-import imgRealSmall from "../assets/images/image-home-real-life-small.webp";
+import Icon from "~/components/ui/Icon.vue";
+
+const imgHomeLarge = "/images/image-home-hero-large.webp";
+const imgHomeSmall = "/images/image-home-hero-small.webp";
+const imgRealLarge = "/images/image-home-real-life-large.webp";
+const imgRealSmall = "/images/image-home-real-life-small.webp";
 
 const features = ref([
   {
