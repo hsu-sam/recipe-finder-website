@@ -101,7 +101,7 @@ const moreRecipes = recipes
         <div
           v-for="rec in moreRecipes"
           :key="rec.id"
-          class="bg-neutral-0 rounded-10 border border-neutral-300 p-100 flex flex-col items-center gap-200"
+          class="bg-neutral-0 rounded-10 border border-neutral-300 p-100 flex flex-col items-center justify-between gap-200"
         >
           <picture class="mx-auto rounded-8 w-full">
             <source media="(min-width: 43.75em)" :srcset="rec.image.large" />
@@ -135,7 +135,7 @@ const moreRecipes = recipes
           </div>
           <NuxtLink :to="`/recipes/${rec.slug}`" class="w-full">
             <div
-              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer hover:bg-green-800"
+              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer transition-all duration-200 hover:bg-neutral-800"
             >
               View Recipe
             </div>

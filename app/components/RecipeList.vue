@@ -1,8 +1,30 @@
 <script setup>
+import { ref, computed } from "vue";
 import Icon from "~/components/ui/Icon.vue";
 import SearchInput from "./ui/SearchInput.vue";
 import Select from "./ui/Select.vue";
 import recipes from "../data/data.json";
+
+const searchQuery = ref("");
+const maxPrepTime = ref(null);
+const maxCookTime = ref(null);
+
+const filteredRecipes = computed(() => {
+  return recipes.filter((recipe) => {
+    const searchLower = searchQuery.value.toLowerCase();
+    const matchesSearch =
+      recipe.title.toLowerCase().includes(searchLower) ||
+      recipe.ingredients.some((ing) => ing.toLowerCase().includes(searchLower));
+
+    const matchesPrepTime =
+      maxPrepTime.value === null || recipe.prepMinutes <= maxPrepTime.value;
+
+    const matchesCookTime =
+      maxCookTime.value === null || recipe.cookMinutes <= maxCookTime.value;
+
+    return matchesSearch && matchesPrepTime && matchesCookTime;
+  });
+});
 </script>
 
 <template>
@@ -11,12 +33,21 @@ import recipes from "../data/data.json";
       class="flex flex-col md:flex-row items-center justify-between w-full gap-2 md:gap-0"
     >
       <div
-        class="flex flex-col md:flex-row items-center md:gap-200 w-full md:w-auto"
+        class="flex flex-col md:flex-row items-center gap-200 w-full md:w-auto"
       >
-        <Select label="Max Prep Time" class="w-full md:w-auto" />
-        <Select label="Max Cook Time" class="w-full md:w-auto" />
+        <Select
+          v-model="maxPrepTime"
+          label="Max Prep Time"
+          class="w-full md:w-auto"
+        />
+        <Select
+          v-model="maxCookTime"
+          label="Max Cook Time"
+          class="w-full md:w-auto"
+        />
       </div>
       <SearchInput
+        v-model="searchQuery"
         placeholder="Search by name or ingredient…"
         class="w-full md:w-fit"
       />
@@ -25,9 +56,9 @@ import recipes from "../data/data.json";
     <div class="grid grid-col-3">
       <div class="grid lg:grid-cols-3 gap-400">
         <div
-          v-for="recipe in recipes"
+          v-for="recipe in filteredRecipes"
           :key="recipe.id"
-          class="bg-neutral-0 rounded-10 border border-neutral-300 p-100 flex flex-col items-center gap-200"
+          class="bg-neutral-0 rounded-10 border border-neutral-300 p-100 flex flex-col items-center justify-between gap-200"
         >
           <picture class="mx-auto rounded-8">
             <source media="(min-width: 43.75em)" :srcset="recipe.image.large" />
@@ -61,12 +92,21 @@ import recipes from "../data/data.json";
           </div>
           <NuxtLink :to="`/recipes/${recipe.slug}`" class="w-full">
             <div
-              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer hover:bg-green-800"
+              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer transition-all duration-200 hover:bg-neutral-800"
             >
               View Recipe
             </div>
           </NuxtLink>
         </div>
+      </div>
+
+      <div
+        v-if="filteredRecipes.length === 0"
+        class="col-span-full flex flex-col items-center justify-center py-800"
+      >
+        <p class="text-preset-5 text-neutral-600">
+          No recipes found. Try adjusting your filters or search query.
+        </p>
       </div>
     </div>
   </div>
