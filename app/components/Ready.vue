@@ -1,6 +1,7 @@
 <script setup>
 import patternKnife from "../assets/illustrations/pattern-knife.svg";
 import patternFork from "../assets/illustrations/pattern-fork.svg";
+import { Motion } from "motion-v";
 </script>
 
 <template>
@@ -8,15 +9,18 @@ import patternFork from "../assets/illustrations/pattern-fork.svg";
     <div
       class="relative bg-neutral-200 py-1200 rounded-16 lg:max-w-298 lg:mx-auto overflow-hidden"
     >
-      <div
+      <Motion
         class="hidden md:block absolute md:-bottom-15 md:-left-20 lg:top-4 lg:-left-15"
+        :animate="{ y: [0, -18, 0] }"
+        :transition="{
+          duration: 4,
+          repeat: Infinity,
+          easing: 'ease-in-out',
+        }"
       >
-        <img
-          :src="patternFork"
-          alt=""
-          class="w-[179px] h-auto md:w-[200px] lg:w-[300px]"
-        />
-      </div>
+        <img :src="patternFork" alt="" class="w-44.75 h-auto md:w-50 lg:w-75" />
+      </Motion>
+
       <div class="flex flex-col gap-400 items-center z-10">
         <div>
           <h2 class="text-preset-2 font-bold text-center">
@@ -34,15 +38,23 @@ import patternFork from "../assets/illustrations/pattern-fork.svg";
           </button>
         </NuxtLink>
       </div>
-      <div
-        class="hidden md:block absolute md:-top-8 md:-right-0 lg:bottom-4 -right-15"
+
+      <Motion
+        class="hidden md:block absolute md:-top-8 md:right-0 lg:bottom-4 -right-15"
+        :animate="{ y: [0, -18, 0] }"
+        :transition="{
+          duration: 4,
+          repeat: Infinity,
+          easing: 'ease-in-out',
+          delay: 1,
+        }"
       >
         <img
           :src="patternKnife"
           alt=""
-          class="w-[179px] h-auto md:w-[180px] lg:w-[300px]"
+          class="w-44.75 h-auto md:w-45 lg:w-75"
         />
-      </div>
+      </Motion>
     </div>
   </footer>
 </template>

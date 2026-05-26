@@ -23,7 +23,7 @@ const moreRecipes = recipes
   <div class="pt-600 px-200 md:px-400">
     <div
       v-if="recipe"
-      class="flex flex-col lg:flex-row gap-200 border-b border-b-neutral-300 pb-800"
+      class="flex flex-col lg:flex-row gap-200 pb-800 lg:max-w-298 mx-auto"
     >
       <picture>
         <source media="(min-width: 43.75em)" :srcset="recipe.image.large" />
@@ -94,8 +94,8 @@ const moreRecipes = recipes
         </section>
       </div>
     </div>
-
-    <div class="pt-800">
+    <div class="w-full border-b border-b-neutral-300"></div>
+    <div class="pt-800 lg:max-w-298 mx-auto">
       <h3 class="text-preset-3 font-bold">More Recipes</h3>
       <div class="grid lg:grid-cols-3 gap-400 mt-400">
         <div

@@ -94,9 +94,10 @@ const philosophies = ref([
         </div>
       </div>
     </section>
+    <div class="w-full border-b border-b-neutral-300"></div>
     <section>
       <div
-        class="flex flex-col gap-800 py-1200 items-start lg:flex-row lg:max-w-298 mx-auto border-y border-neutral-200"
+        class="flex flex-col gap-800 py-1200 items-start lg:flex-row lg:max-w-298 mx-auto"
       >
         <h2 class="text-preset-2-mobile md:text-preset-2 font-bold flex-none">
           Why we exist
@@ -125,7 +126,7 @@ const philosophies = ref([
           </div>
         </div>
       </div>
-
+      <div class="w-full border-b border-b-neutral-300"></div>
       <div
         class="flex flex-col gap-800 py-1200 items-start lg:flex-row lg:max-w-298 mx-auto"
       >
@@ -157,6 +158,8 @@ const philosophies = ref([
         </div>
       </div>
     </section>
+
+    <div class="w-full border-b border-b-neutral-300"></div>
     <section>
       <div
         class="flex flex-col gap-800 py-1200 items-center border-t border-t-neutral-200 lg:flex-row lg:max-w-298 mx-auto"
