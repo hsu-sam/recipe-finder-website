@@ -4,6 +4,9 @@ import Icon from "~/components/ui/Icon.vue";
 import SearchInput from "./ui/SearchInput.vue";
 import Select from "./ui/Select.vue";
 import recipes from "../data/data.json";
+import { Motion } from "motion-v";
+
+const { inViewOptions, fadeUp } = usePageAnimations();
 
 const searchQuery = ref("");
 const maxPrepTime = ref(null);
@@ -29,8 +32,12 @@ const filteredRecipes = computed(() => {
 
 <template>
   <div class="flex flex-col gap-300">
-    <div
+    <Motion
       class="flex flex-col md:flex-row items-center justify-between w-full gap-2 md:gap-0"
+      :initial="'hidden'"
+      :whileInView="'visible'"
+      :variants="fadeUp"
+      :inViewOptions="inViewOptions"
     >
       <div
         class="flex flex-col md:flex-row items-center gap-200 w-full md:w-auto"
@@ -51,7 +58,7 @@ const filteredRecipes = computed(() => {
         placeholder="Search by name or ingredient…"
         class="w-full md:w-fit"
       />
-    </div>
+    </Motion>
 
     <div class="grid grid-col-3">
       <div class="grid lg:grid-cols-3 gap-400">

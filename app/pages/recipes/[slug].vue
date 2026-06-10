@@ -2,18 +2,25 @@
 import recipes from "~/data/data.json";
 import { useRoute } from "vue-router";
 import Icon from "~/components/ui/Icon.vue";
+import { Motion } from "motion-v";
+
+const {
+  inViewOptions,
+  fadeUp,
+  slideFromRight,
+  staggerContainer,
+  heroTitleWord,
+  delayedFadeUp,
+} = usePageAnimations();
 
 const route = useRoute();
 
-// Find the matching recipe by slug
 const recipe = recipes.find((r) => r.slug === route.params.slug);
 
-// Redirect to 404 if not found
 if (!recipe) {
   throw createError({ statusCode: 404, statusMessage: "Recipe not found" });
 }
 
-// Get 3 more recipes excluding the current one
 const moreRecipes = recipes
   .filter((r) => r.slug !== route.params.slug)
   .slice(0, 3);
@@ -21,26 +28,36 @@ const moreRecipes = recipes
 
 <template>
   <div class="pt-600 px-200 md:px-400">
-    <div
+    <Motion
       v-if="recipe"
       class="flex flex-col lg:flex-row gap-200 pb-800 lg:max-w-298 mx-auto"
+      :initial="'hidden'"
+      :animate="'visible'"
+      :variants="staggerContainer"
     >
-      <picture>
-        <source media="(min-width: 43.75em)" :srcset="recipe.image.large" />
-        <img
-          :src="recipe.image.small"
-          :alt="recipe.title"
-          class="w-145 h-auto rounded-10"
-        />
-      </picture>
+      <Motion :variants="slideFromRight">
+        <picture>
+          <source media="(min-width: 43.75em)" :srcset="recipe.image.large" />
+          <img
+            :src="recipe.image.small"
+            :alt="recipe.title"
+            class="w-145 h-auto rounded-10"
+          />
+        </picture>
+      </Motion>
 
-      <div class="flex flex-col gap-250">
-        <h1 class="text-preset-2 font-bold">
+      <Motion class="flex flex-col gap-250" :variants="staggerContainer">
+        <Motion as="h1" class="text-preset-2 font-bold" :variants="heroTitleWord">
           {{ recipe.title }}
-        </h1>
-        <p>{{ recipe.overview }}</p>
+        </Motion>
+        <Motion as="p" :variants="delayedFadeUp(0.2)">
+          {{ recipe.overview }}
+        </Motion>
 
-        <div class="flex flex-wrap gap-200">
+        <Motion
+          class="flex flex-wrap gap-200"
+          :variants="delayedFadeUp(0.35)"
+        >
           <p>
             <Icon icon="local:icon-servings" /> Servings:
             <span>{{ recipe.servings }}</span>
@@ -53,15 +70,25 @@ const moreRecipes = recipes
             <Icon icon="local:icon-cook-time" /> Cook Time:
             <span>{{ recipe.cookMinutes }} min</span>
           </p>
-        </div>
+        </Motion>
 
-        <section>
-          <h4 class="text-preset-4 font-bold">Ingredients:</h4>
-          <ul class="flex flex-col gap-100">
-            <li
+        <Motion
+          as="section"
+          :initial="'hidden'"
+          :whileInView="'visible'"
+          :variants="staggerContainer"
+          :inViewOptions="inViewOptions"
+        >
+          <Motion as="h4" class="text-preset-4 font-bold" :variants="fadeUp">
+            Ingredients:
+          </Motion>
+          <Motion as="ul" class="flex flex-col gap-100" :variants="staggerContainer">
+            <Motion
               v-for="(ingredient, i) in recipe.ingredients"
               :key="i"
+              as="li"
               class="flex flex-row items-center justify-start gap-100"
+              :variants="fadeUp"
             >
               <Icon
                 icon="local:icon-bullet-point"
@@ -70,17 +97,27 @@ const moreRecipes = recipes
                 class="shrink-0"
               />
               <span>{{ ingredient }}</span>
-            </li>
-          </ul>
-        </section>
+            </Motion>
+          </Motion>
+        </Motion>
 
-        <section>
-          <h2 class="text-preset-4 font-bold">Instructions:</h2>
-          <ol class="flex flex-col gap-100">
-            <li
+        <Motion
+          as="section"
+          :initial="'hidden'"
+          :whileInView="'visible'"
+          :variants="staggerContainer"
+          :inViewOptions="inViewOptions"
+        >
+          <Motion as="h2" class="text-preset-4 font-bold" :variants="fadeUp">
+            Instructions:
+          </Motion>
+          <Motion as="ol" class="flex flex-col gap-100" :variants="staggerContainer">
+            <Motion
               v-for="(step, i) in recipe.instructions"
               :key="i"
+              as="li"
               class="flex flex-row items-center justify-start gap-100"
+              :variants="fadeUp"
             >
               <Icon
                 icon="local:icon-bullet-point"
@@ -88,15 +125,23 @@ const moreRecipes = recipes
                 height="40"
                 class="shrink-0"
               />
-              <span> {{ step }}</span>
-            </li>
-          </ol>
-        </section>
-      </div>
-    </div>
+              <span>{{ step }}</span>
+            </Motion>
+          </Motion>
+        </Motion>
+      </Motion>
+    </Motion>
     <div class="w-full border-b border-b-neutral-300"></div>
-    <div class="pt-800 lg:max-w-298 mx-auto">
-      <h3 class="text-preset-3 font-bold">More Recipes</h3>
+    <Motion
+      class="pt-800 lg:max-w-298 mx-auto"
+      :initial="'hidden'"
+      :whileInView="'visible'"
+      :variants="staggerContainer"
+      :inViewOptions="inViewOptions"
+    >
+      <Motion as="h3" class="text-preset-3 font-bold" :variants="fadeUp">
+        More Recipes
+      </Motion>
       <div class="grid lg:grid-cols-3 gap-400 mt-400">
         <div
           v-for="rec in moreRecipes"
@@ -142,6 +187,6 @@ const moreRecipes = recipes
           </NuxtLink>
         </div>
       </div>
-    </div>
+    </Motion>
   </div>
 </template>

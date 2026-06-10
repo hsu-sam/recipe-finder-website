@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import SearchInput from "~/components/ui/SearchInput.vue";
-import Select from "~/components/ui/Select.vue";
+import { Motion } from "motion-v";
+
+const { delayedFadeUp, heroTitleWord } = usePageAnimations();
 </script>
 
 <template>
@@ -8,20 +9,28 @@ import Select from "~/components/ui/Select.vue";
     <section class="">
       <div class="flex flex-col gap-400 pb-800">
         <div>
-          <h1
+          <Motion
+            as="h1"
             class="text-preset-2-mobile md:text-preset-2 lg:text-center font-bold"
+            :initial="'hidden'"
+            :animate="'visible'"
+            :variants="heroTitleWord"
           >
             Explore our simple, healthy recipes
-          </h1>
+          </Motion>
         </div>
-        <p
+        <Motion
+          as="p"
           class="text-green-600 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
+          :initial="'hidden'"
+          :animate="'visible'"
+          :variants="delayedFadeUp(0.35)"
         >
           Discover eight quick, whole-food dishes that fit real-life schedules
           and taste amazing. Use the search bar to find a recipe by name or
           ingredient, or simply scroll the list and let something delicious
           catch your eye.
-        </p>
+        </Motion>
       </div>
 
       <div class="lg:max-w-298 mx-auto">

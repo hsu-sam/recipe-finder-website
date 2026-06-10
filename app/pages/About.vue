@@ -1,7 +1,16 @@
 <script setup>
-import patternSquiggle2 from "~/assets/illustrations/pattern-squiggle-2.svg";
+import PatternSquiggle2 from "~/assets/illustrations/PatternSquiggle2.vue";
 import { ref } from "vue";
 import Icon from "~/components/ui/Icon.vue";
+import { Motion } from "motion-v";
+
+const {
+  inViewOptions,
+  fadeUp,
+  slideFromRight,
+  staggerContainer,
+  delayedFadeUp,
+} = usePageAnimations();
 
 const imgMissionLarge = "/images/image-about-our-mission-large.webp";
 const imgMissionSmall = "/images/image-about-our-mission-small.webp";
@@ -55,10 +64,14 @@ const philosophies = ref([
 <template>
   <div class="pt-600 px-200 md:px-400">
     <section class="overflow-hidden">
-      <div
+      <Motion
         class="flex flex-col gap-800 pb-1200 items-center lg:flex-row lg:max-w-298 mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
       >
-        <div class="flex flex-col gap-300">
+        <Motion class="flex flex-col gap-300" :variants="fadeUp">
           <div class="w-fit bg-orange-500 px-075 py-025 rounded-6">
             <p class="text-preset-3 font-bold">Our Mission</p>
           </div>
@@ -76,8 +89,8 @@ const philosophies = ref([
               ingredients and straightforward steps.
             </p>
           </div>
-        </div>
-        <div class="relative">
+        </Motion>
+        <Motion class="relative" :variants="slideFromRight">
           <picture class="mx-auto rounded-8">
             <source media="(min-width: 43.75em)" :srcset="imgMissionLarge" />
             <img
@@ -86,28 +99,33 @@ const philosophies = ref([
               alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
             />
           </picture>
-          <img
-            :src="patternSquiggle2"
-            alt=""
-            class="absolute top-75 -right-20"
-          />
-        </div>
-      </div>
+          <PatternSquiggle2 class="absolute top-75 -right-20" />
+        </Motion>
+      </Motion>
     </section>
     <div class="w-full border-b border-b-neutral-300"></div>
     <section>
-      <div
+      <Motion
         class="flex flex-col gap-800 py-1200 items-start lg:flex-row lg:max-w-298 mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
       >
-        <h2 class="text-preset-2-mobile md:text-preset-2 font-bold flex-none">
+        <Motion
+          as="h2"
+          class="text-preset-2-mobile md:text-preset-2 font-bold flex-none"
+          :variants="fadeUp"
+        >
           Why we exist
-        </h2>
+        </Motion>
 
-        <div class="flex flex-col gap-300">
-          <div
+        <Motion class="flex flex-col gap-300" :variants="staggerContainer">
+          <Motion
             v-for="QA in QAs"
             :key="QA.title"
             class="flex flex-row items-start justify-center gap-300 flex-1"
+            :variants="fadeUp"
           >
             <div class="flex flex-row items-start justify-center gap-250">
               <Icon
@@ -123,22 +141,31 @@ const philosophies = ref([
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </Motion>
+        </Motion>
+      </Motion>
       <div class="w-full border-b border-b-neutral-300"></div>
-      <div
+      <Motion
         class="flex flex-col gap-800 py-1200 items-start lg:flex-row lg:max-w-298 mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
       >
-        <h2 class="text-preset-2-mobile md:text-preset-2 font-bold flex-none">
+        <Motion
+          as="h2"
+          class="text-preset-2-mobile md:text-preset-2 font-bold flex-none"
+          :variants="fadeUp"
+        >
           Our food philosophy
-        </h2>
+        </Motion>
 
-        <div class="flex flex-col gap-300">
-          <div
+        <Motion class="flex flex-col gap-300" :variants="staggerContainer">
+          <Motion
             v-for="philosophy in philosophies"
             :key="philosophy.title"
             class="flex flex-row items-start gap-300 flex-1"
+            :variants="fadeUp"
           >
             <div class="flex flex-row items-start gap-250">
               <Icon
@@ -154,17 +181,21 @@ const philosophies = ref([
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </Motion>
+        </Motion>
+      </Motion>
     </section>
 
     <div class="w-full border-b border-b-neutral-300"></div>
     <section>
-      <div
+      <Motion
         class="flex flex-col gap-800 py-1200 items-center border-t border-t-neutral-200 lg:flex-row lg:max-w-298 mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
       >
-        <div class="flex flex-col gap-300">
+        <Motion class="flex flex-col gap-300" :variants="fadeUp">
           <h2 class="text-preset-2-mobile md:text-preset-2 font-bold">
             Beyond the plate
           </h2>
@@ -183,8 +214,8 @@ const philosophies = ref([
               </li>
             </ul>
           </div>
-        </div>
-        <div class="">
+        </Motion>
+        <Motion :variants="slideFromRight">
           <picture class="mx-auto rounded-8">
             <source media="(min-width: 43.75em)" :srcset="imgPhilosophyLarge" />
             <img
@@ -193,8 +224,8 @@ const philosophies = ref([
               alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
             />
           </picture>
-        </div>
-      </div>
+        </Motion>
+      </Motion>
     </section>
     <Ready />
   </div>

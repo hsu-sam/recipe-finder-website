@@ -2,6 +2,17 @@
 import { ref } from "vue";
 import PatternSquiggle1 from "~/assets/illustrations/PatternSquiggle1.vue";
 import Icon from "~/components/ui/Icon.vue";
+import { Motion } from "motion-v";
+
+const {
+  inViewOptions,
+  fadeUp,
+  slideFromRight,
+  staggerContainer,
+  heroTitleContainer,
+  heroTitleWord,
+  delayedFadeUp,
+} = usePageAnimations();
 
 const imgHomeLarge = "/images/image-home-hero-large.webp";
 const imgHomeSmall = "/images/image-home-hero-small.webp";
@@ -37,38 +48,66 @@ const features = ref([
         <div class="flex flex-col gap-600 lg:gap-1000 lg:max-w-298 mx-auto">
           <div class="flex flex-col gap-400">
             <div>
-              <h1
+              <Motion
+                as="h1"
                 class="text-preset-1-mobile md:text-preset-1-tablet relative lg:text-preset-1 lg:text-center font-bold"
+                :initial="'hidden'"
+                :animate="'visible'"
+                :variants="heroTitleContainer"
               >
-                <span class="relative inline-block">
+                <Motion
+                  as="span"
+                  class="relative inline-block"
+                  :variants="heroTitleWord"
+                >
                   Healthy
                   <span
                     class="absolute bottom-[0.35em] -z-10 left-0 w-full h-[0.44em] bg-orange-500 rounded-4"
                   ></span>
-                </span>
-                meals, zero fuss
-              </h1>
+                </Motion>
+
+                <Motion as="span" :variants="heroTitleWord">
+                  meals, zero fuss
+                </Motion>
+              </Motion>
             </div>
-            <p
+            <Motion
+              as="p"
               class="text-green-600 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
+              :initial="'hidden'"
+              :animate="'visible'"
+              :variants="delayedFadeUp(0.45)"
             >
               Discover eight quick, whole-food recipes that you can cook
               tonight—no processed junk, no guesswork.
-            </p>
-            <NuxtLink to="/recipes" class="lg:self-center">
-              <button
-                class="rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 transition-all duration-200 hover:bg-neutral-800 hover:shadow-md active:scale-95 w-49.5 lg:mx-auto text-center"
-              >
-                Browse recipes
-              </button>
-            </NuxtLink>
+            </Motion>
+            <Motion
+              :initial="'hidden'"
+              :animate="'visible'"
+              :variants="delayedFadeUp(0.6)"
+              class="lg:self-center"
+            >
+              <NuxtLink to="/recipes">
+                <button
+                  class="rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 transition-all duration-200 hover:bg-neutral-800 hover:shadow-md active:scale-95 w-49.5 lg:mx-auto text-center"
+                >
+                  Browse recipes
+                </button>
+              </NuxtLink>
+            </Motion>
           </div>
 
           <div class="absolute bottom-18 left-0 -z-10 w-full">
-            <PatternSquiggle1 class="w-full h-auto opacity-60" />
+            <PatternSquiggle1 class="opacity-60" />
           </div>
 
-          <div class="flex flex-col gap-400 lg:pb-1200">
+          <Motion
+            class="flex flex-col gap-400 lg:pb-1200"
+            :initial="'hidden'"
+            :whileInView="'visible'"
+            :variants="fadeUp"
+            :inViewOptions="inViewOptions"
+          >
             <picture class="mx-auto bg-neutral-0 p-2 rounded-8">
               <source media="(min-width: 43.75em)" :srcset="imgHomeLarge" />
               <img
@@ -77,22 +116,36 @@ const features = ref([
                 alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
               />
             </picture>
-          </div>
+          </Motion>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="flex flex-col gap-600 lg:max-w-298 lg:mx-auto">
-        <h2 class="text-preset-2 lg:text-center font-bold">What you'll get</h2>
-
-        <div
-          class="flex flex-col lg:flex-row gap-300 md:gap-400 lg:items-start lg:justify-center"
+      <Motion
+        class="flex flex-col gap-600 lg:max-w-298 lg:mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
+      >
+        <Motion
+          as="h2"
+          class="text-preset-2 lg:text-center font-bold"
+          :variants="fadeUp"
         >
-          <div
+          What you'll get
+        </Motion>
+
+        <Motion
+          class="flex flex-col lg:flex-row gap-300 md:gap-400 lg:items-start lg:justify-center"
+          :variants="staggerContainer"
+        >
+          <Motion
             v-for="feature in features"
             :key="feature.title"
             class="flex flex-col gap-300 flex-1"
+            :variants="fadeUp"
           >
             <div class="bg-neutral-0 px-075 py-050 rounded-4 flex-1 w-fit">
               <Icon :icon="feature.icon" width="40" height="40" />
@@ -101,16 +154,20 @@ const features = ref([
             <p class="text-preset-6 text-neutral-600">
               {{ feature.description }}
             </p>
-          </div>
-        </div>
-      </div>
+          </Motion>
+        </Motion>
+      </Motion>
     </section>
 
     <section>
-      <div
+      <Motion
         class="flex flex-col lg:flex-row lg:items-center gap-600 py-1000 lg:py-1200 lg:max-w-298 lg:mx-auto"
+        :initial="'hidden'"
+        :whileInView="'visible'"
+        :variants="staggerContainer"
+        :inViewOptions="inViewOptions"
       >
-        <div class="flex flex-col justify-center gap-300">
+        <Motion class="flex flex-col justify-center gap-300" :variants="fadeUp">
           <h2 class="text-preset-2 font-bold">Built for real life</h2>
           <p class="text-neutral-600">
             Cooking shouldn’t be complicated. These recipes come in under
@@ -126,8 +183,8 @@ const features = ref([
             Whether you’re new to the kitchen or just need fresh ideas, we’ve
             got you covered.
           </p>
-        </div>
-        <div>
+        </Motion>
+        <Motion :variants="slideFromRight">
           <picture class="mx-auto rounded-8">
             <source media="(min-width: 43.75em)" :srcset="imgRealLarge" />
             <img
@@ -136,8 +193,8 @@ const features = ref([
               alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
             />
           </picture>
-        </div>
-      </div>
+        </Motion>
+      </Motion>
     </section>
 
     <Ready />

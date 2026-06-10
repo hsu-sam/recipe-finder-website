@@ -1,0 +1,7 @@
+packages:
+  - "recipe-finder-website"
+  - "spectorly.frontend"
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
