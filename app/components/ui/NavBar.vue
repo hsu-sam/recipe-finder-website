@@ -121,11 +121,10 @@ function isNavActive(to: string) {
               <li v-for="link in navLinks" :key="link.to">
                 <NuxtLink
                   :to="link.to"
-                  class="nav-link relative flex items-center px-100 py-150 text-preset-100 font-bold text-green-950 hover:bg-neutral-50 hover:text-black rounded-md"
-                  :class="{ 'nav-link--active': isNavActive(link.to) }"
+                  class="flex items-center py-150 text-preset-100 font-bold text-green-950 transition-colors hover:bg-neutral-50 hover:text-black rounded-md"
+                  :class="{ 'bg-neutral-50 text-black': isNavActive(link.to) }"
                 >
                   {{ link.label }}
-                  <span class="nav-link-underline" aria-hidden="true" />
                 </NuxtLink>
               </li>
             </ul>
