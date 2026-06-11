@@ -85,15 +85,15 @@ onMounted(() => {
     <!-- Dropdown Menu -->
     <div
       v-if="isOpen"
-      class="absolute top-full mt-2 left-0 right-0 bg-white border border-gray-300 rounded-lg shadow-lg z-10"
+      class="absolute w-[240px] top-full mt-2 left-0 right-0 bg-white border border-gray-300 rounded-lg shadow-lg z-10"
       @click.stop
     >
-      <div class="px-2 space-y-3">
+      <div class="p-2 space-y-3">
         <!-- Options -->
         <label
           v-for="option in options"
           :key="option.value"
-          class="flex items-center gap-3 cursor-pointer group"
+          class="flex items-center gap-2 cursor-pointer group p-2"
         >
           <input
             type="radio"
@@ -102,7 +102,7 @@ onMounted(() => {
             class="w-4 h-4 font-bold"
           />
           <span
-            class="text-neutral-900 text-preset-7 font-bold group-hover:text-gray-900"
+            class="text-green-900 text-preset-7 font-bold group-hover:text-green-900"
           >
             {{ option.label }}
           </span>
@@ -111,7 +111,7 @@ onMounted(() => {
         <!-- Clear Button -->
         <button
           @click="handleClear"
-          class="w-full text-left text-sm text-gray-600 hover:text-gray-900 transition-colors py-1"
+          class="w-full text-left text-preset-7 text-gray-600! font-bold hover:text-gray-900 transition-colors px-2"
         >
           Clear
         </button>
