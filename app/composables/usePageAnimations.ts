@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import { useReducedMotion } from "motion-v";
 
-const EASE_OUT = [0.23, 1, 0.32, 1];
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 const UI_DURATION = 0.25;
 const HERO_DURATION = 0.4;
 
@@ -80,7 +80,7 @@ export function usePageAnimations() {
     },
   }));
 
-  const delayedFadeUp = (delay) => ({
+  const delayedFadeUp = (delay: number) => ({
     hidden: enterState.value,
     visible: {
       opacity: 1,

@@ -101,7 +101,7 @@ const philosophies = ref([
               alt="cheerful woman holding cut cucumber cutting board while cooking salad kitchen"
             />
           </picture>
-          <PatternSquiggle2 class="absolute top-75 -right-20" />
+          <PatternSquiggle2 class="hidden lg:block absolute top-75 -right-20" />
         </Motion>
       </Motion>
     </section>

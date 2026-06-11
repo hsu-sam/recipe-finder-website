@@ -17,6 +17,14 @@ const navLinks = [
   { label: "About", to: "/about" },
   { label: "Recipes", to: "/recipes" },
 ];
+
+function isNavActive(to: string) {
+  if (to === "/recipes") {
+    return route.path.startsWith("/recipes");
+  }
+
+  return route.path === to;
+}
 </script>
 
 <template>
@@ -45,13 +53,11 @@ const navLinks = [
             <li v-for="link in navLinks" :key="link.to">
               <NuxtLink
                 :to="link.to"
-                class="relative px-3 py-0.5 text-preset-7 font-semi-bold transition-colors duration-200 rounded-md"
+                class="nav-link relative inline-block px-3 py-0.5 text-preset-7 font-semi-bold rounded-md"
+                :class="{ 'nav-link--active': isNavActive(link.to) }"
               >
                 {{ link.label }}
-                <span
-                  v-if="route.path === link.to"
-                  class="absolute inset-x-3 -bottom-px h-0.5 rounded-4 bg-orange-500"
-                />
+                <span class="nav-link-underline" aria-hidden="true" />
               </NuxtLink>
             </li>
           </ul>
@@ -115,11 +121,11 @@ const navLinks = [
               <li v-for="link in navLinks" :key="link.to">
                 <NuxtLink
                   :to="link.to"
-                  class="flex items-center py-150 text-preset-100 font-bold text-green-950 transition-colors hover:bg-neutral-50 hover:text-black"
-                  active-class="bg-neutral-50 text-black"
-                  exact-active-class="bg-neutral-50 text-black font-semibold"
+                  class="nav-link relative flex items-center px-100 py-150 text-preset-100 font-bold text-green-950 hover:bg-neutral-50 hover:text-black rounded-md"
+                  :class="{ 'nav-link--active': isNavActive(link.to) }"
                 >
                   {{ link.label }}
+                  <span class="nav-link-underline" aria-hidden="true" />
                 </NuxtLink>
               </li>
             </ul>
