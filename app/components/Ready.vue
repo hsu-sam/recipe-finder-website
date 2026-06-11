@@ -43,7 +43,7 @@ const { inViewOptions, fadeUp, staggerContainer, delayedFadeUp } =
         <Motion :variants="delayedFadeUp(0.15)">
           <NuxtLink to="/recipes" class="lg:self-center">
             <button
-              class="rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 transition-all duration-200 hover:bg-neutral-800 hover:shadow-md active:scale-95 w-49.5 lg:mx-auto text-center"
+              class="btn-press rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 hover:bg-neutral-800 hover:shadow-md w-49.5 lg:mx-auto text-center"
             >
               Browse recipes
             </button>

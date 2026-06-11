@@ -4,6 +4,8 @@ import { ref } from "vue";
 import Icon from "~/components/ui/Icon.vue";
 import { Motion } from "motion-v";
 
+useHead({ title: "About Recipe Fiinder" });
+
 const {
   inViewOptions,
   fadeUp,

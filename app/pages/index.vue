@@ -4,6 +4,8 @@ import PatternSquiggle1 from "~/assets/illustrations/PatternSquiggle1.vue";
 import Icon from "~/components/ui/Icon.vue";
 import { Motion } from "motion-v";
 
+useHead({ title: "Recipe Fiinder" });
+
 const {
   inViewOptions,
   fadeUp,
@@ -76,7 +78,7 @@ const features = ref([
               class="text-green-600 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
               :initial="'hidden'"
               :animate="'visible'"
-              :variants="delayedFadeUp(0.45)"
+              :variants="delayedFadeUp(0.15)"
             >
               Discover eight quick, whole-food recipes that you can cook
               tonight—no processed junk, no guesswork.
@@ -84,12 +86,12 @@ const features = ref([
             <Motion
               :initial="'hidden'"
               :animate="'visible'"
-              :variants="delayedFadeUp(0.6)"
+              :variants="delayedFadeUp(0.25)"
               class="lg:self-center"
             >
               <NuxtLink to="/recipes">
                 <button
-                  class="rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 transition-all duration-200 hover:bg-neutral-800 hover:shadow-md active:scale-95 w-49.5 lg:mx-auto text-center"
+                  class="btn-press rounded-10 bg-green-900 px-200 py-150 text-preset-8 font-bold text-neutral-0 hover:bg-neutral-800 hover:shadow-md w-49.5 lg:mx-auto text-center"
                 >
                   Browse recipes
                 </button>

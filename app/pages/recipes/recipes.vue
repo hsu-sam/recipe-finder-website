@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useHead({ title: "Recipes List Page | Recipe Fiinder" });
+
 import { Motion } from "motion-v";
 
 const { delayedFadeUp, heroTitleWord } = usePageAnimations();
@@ -24,7 +26,7 @@ const { delayedFadeUp, heroTitleWord } = usePageAnimations();
           class="text-green-600 text-preset-5 lg:text-center lg:w-145 lg:mx-auto"
           :initial="'hidden'"
           :animate="'visible'"
-          :variants="delayedFadeUp(0.35)"
+          :variants="delayedFadeUp(0.15)"
         >
           Discover eight quick, whole-food dishes that fit real-life schedules
           and taste amazing. Use the search bar to find a recipe by name or

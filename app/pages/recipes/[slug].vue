@@ -1,4 +1,6 @@
 <script setup>
+useHead({ title: "Recipe Detail Page | Recipe Fiinder" });
+
 import recipes from "~/data/data.json";
 import { useRoute } from "vue-router";
 import Icon from "~/components/ui/Icon.vue";
@@ -47,17 +49,18 @@ const moreRecipes = recipes
       </Motion>
 
       <Motion class="flex flex-col gap-250" :variants="staggerContainer">
-        <Motion as="h1" class="text-preset-2 font-bold" :variants="heroTitleWord">
+        <Motion
+          as="h1"
+          class="text-preset-2 font-bold"
+          :variants="heroTitleWord"
+        >
           {{ recipe.title }}
         </Motion>
         <Motion as="p" :variants="delayedFadeUp(0.2)">
           {{ recipe.overview }}
         </Motion>
 
-        <Motion
-          class="flex flex-wrap gap-200"
-          :variants="delayedFadeUp(0.35)"
-        >
+        <Motion class="flex flex-wrap gap-200" :variants="delayedFadeUp(0.35)">
           <p>
             <Icon icon="local:icon-servings" /> Servings:
             <span>{{ recipe.servings }}</span>
@@ -74,21 +77,18 @@ const moreRecipes = recipes
 
         <Motion
           as="section"
+          class="flex flex-col gap-100"
           :initial="'hidden'"
           :whileInView="'visible'"
-          :variants="staggerContainer"
+          :variants="fadeUp"
           :inViewOptions="inViewOptions"
         >
-          <Motion as="h4" class="text-preset-4 font-bold" :variants="fadeUp">
-            Ingredients:
-          </Motion>
-          <Motion as="ul" class="flex flex-col gap-100" :variants="staggerContainer">
-            <Motion
+          <h4 class="text-preset-4 font-bold">Ingredients:</h4>
+          <ul class="flex flex-col gap-100">
+            <li
               v-for="(ingredient, i) in recipe.ingredients"
               :key="i"
-              as="li"
               class="flex flex-row items-center justify-start gap-100"
-              :variants="fadeUp"
             >
               <Icon
                 icon="local:icon-bullet-point"
@@ -97,27 +97,24 @@ const moreRecipes = recipes
                 class="shrink-0"
               />
               <span>{{ ingredient }}</span>
-            </Motion>
-          </Motion>
+            </li>
+          </ul>
         </Motion>
 
         <Motion
           as="section"
+          class="flex flex-col gap-100"
           :initial="'hidden'"
           :whileInView="'visible'"
-          :variants="staggerContainer"
+          :variants="fadeUp"
           :inViewOptions="inViewOptions"
         >
-          <Motion as="h2" class="text-preset-4 font-bold" :variants="fadeUp">
-            Instructions:
-          </Motion>
-          <Motion as="ol" class="flex flex-col gap-100" :variants="staggerContainer">
-            <Motion
+          <h2 class="text-preset-4 font-bold">Instructions:</h2>
+          <ol class="flex flex-col gap-100">
+            <li
               v-for="(step, i) in recipe.instructions"
               :key="i"
-              as="li"
               class="flex flex-row items-center justify-start gap-100"
-              :variants="fadeUp"
             >
               <Icon
                 icon="local:icon-bullet-point"
@@ -126,8 +123,8 @@ const moreRecipes = recipes
                 class="shrink-0"
               />
               <span>{{ step }}</span>
-            </Motion>
-          </Motion>
+            </li>
+          </ol>
         </Motion>
       </Motion>
     </Motion>
@@ -136,12 +133,10 @@ const moreRecipes = recipes
       class="pt-800 lg:max-w-298 mx-auto"
       :initial="'hidden'"
       :whileInView="'visible'"
-      :variants="staggerContainer"
+      :variants="fadeUp"
       :inViewOptions="inViewOptions"
     >
-      <Motion as="h3" class="text-preset-3 font-bold" :variants="fadeUp">
-        More Recipes
-      </Motion>
+      <h3 class="text-preset-3 font-bold">More Recipes</h3>
       <div class="grid lg:grid-cols-3 gap-400 mt-400">
         <div
           v-for="rec in moreRecipes"
@@ -180,7 +175,7 @@ const moreRecipes = recipes
           </div>
           <NuxtLink :to="`/recipes/${rec.slug}`" class="w-full">
             <div
-              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer transition-all duration-200 hover:bg-neutral-800"
+              class="btn-press w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer hover:bg-neutral-800"
             >
               View Recipe
             </div>

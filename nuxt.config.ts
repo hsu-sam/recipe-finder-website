@@ -9,4 +9,11 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   plugins: ["~/plugins/icon.ts"],
+  app: {
+    head: {
+      title: "Recipe Fiinder",
+      meta: [{ name: "description", content: "Recipe Fiinder" }],
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    },
+  },
 });

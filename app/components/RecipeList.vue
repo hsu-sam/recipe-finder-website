@@ -99,7 +99,7 @@ const filteredRecipes = computed(() => {
           </div>
           <NuxtLink :to="`/recipes/${recipe.slug}`" class="w-full">
             <div
-              class="w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer transition-all duration-200 hover:bg-neutral-800"
+              class="btn-press w-full px-400 py-150 rounded-full bg-green-900 text-center text-white font-bold cursor-pointer hover:bg-neutral-800"
             >
               View Recipe
             </div>

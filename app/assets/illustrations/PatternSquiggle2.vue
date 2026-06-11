@@ -4,6 +4,8 @@ import { Motion } from "motion-v";
 
 defineOptions({ inheritAttrs: false });
 
+const { prefersReducedMotion, EASE_OUT } = usePageAnimations();
+
 const squigglePath =
   "M6.6 12.566c26.777-11.217 28.507 32.54 35.677 45.197 3.78 6.664 9.209 13.54 16.707 16.244 26.101 9.425 66.795-42.147 76.589.955 4.901 21.581-1.184 43.878 18.78 59.935 13.652 10.983 30.6 10.806 44.146.604 5.446-4.103-1.435-12.18-6.835-8.059-21.065 16.087-38.987-11.267-43.649-27.683-2.333-8.212-1.061-16.368-1.865-24.647-.737-7.589-1.606-13.97-6.5-20.125-9.719-12.229-26.991-12.97-40.442-7.328-3.281 1.372-6.144 3.672-9.318 5.208-8.505 4.111-25.485 9.817-34.935 5.047-8.518-4.296-11.058-35.22-17.096-43.97C29.6 1.973 16.951-3.213 3.484 2.468-2.737 5.089.312 15.197 6.599 12.566Z";
 
@@ -31,13 +33,13 @@ const maskId = `squiggle2-mask-${uid}`;
           stroke-width="80"
           stroke-linecap="round"
           stroke-linejoin="round"
-          :initial="{ pathLength: 0 }"
+          :initial="{ pathLength: prefersReducedMotion ? 1 : 0 }"
           :animate="{ pathLength: 1 }"
-          :transition="{
-            duration: 2,
-            ease: 'easeInOut',
-            delay: 0.8,
-          }"
+          :transition="
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { duration: 1.8, ease: EASE_OUT, delay: 0.4 }
+          "
         />
       </mask>
     </defs>
