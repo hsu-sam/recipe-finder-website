@@ -1,75 +1,77 @@
-# Nuxt Minimal Starter
+# Frontend Mentor - Weather app solution
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a solution to the [Recipe finder website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/recipe-finder-website--Ui-TZTPxN). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Setup
+## Table of contents
 
-Make sure to install dependencies:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-```bash
-# npm
-npm install
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-# pnpm
-pnpm install
+## Overview
 
-# yarn
-yarn install
+### The challenge
 
-# bun
-bun install
-```
+Users should be able to:
 
-## Development Server
+- Search for weather information by entering a location in the search bar
+- View current weather conditions including temperature, weather icon, and location details
+- See additional weather metrics like "feels like" temperature, humidity percentage, wind speed, and precipitation amounts
+- Browse a 7-day weather forecast with daily high/low temperatures and weather icons
+- View an hourly forecast showing temperature changes throughout the day
+- Switch between different days of the week using the day selector in the hourly forecast section
+- Toggle between Imperial and Metric measurement units via the units dropdown
+- Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-Start the development server on `http://localhost:3000`:
+### Screenshot
 
-```bash
-# npm
-npm run dev
+![](./public/preview.jpg)
 
-# pnpm
-pnpm dev
+### Links
 
-# yarn
-yarn dev
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: recipe-finder-website-seven.vercel.app
 
-# bun
-bun run dev
-```
+## My process
 
-## Production
+### Built with
 
-Build the application for production:
+- Typescript
+- Tailwind CSS
+- Mobile-first workflow
+- VueJS (https://vuejs.org/) - JS library
+- Tailwind CSS (https://tailwindcss.com) - For styles
 
-```bash
-# npm
-npm run build
+### What I learned
 
-# pnpm
-pnpm build
+I learnt how to build websites with nuxt for the first time from config my nuxt website to folder and file structure and organisation files.
 
-# yarn
-yarn build
+### Continued development
 
-# bun
-bun run build
-```
+Working with nuxt still not yet configure with it need to learn how build roboust website with cool animation that makes user feel alive like louis vuitton, Google ventures and more.
 
-Locally preview production build:
+### Useful resources
 
-```bash
-# npm
-npm run preview
+- [NUXT](https://nuxt.com/) - This documentation helped me nuxt basics and advanced concepts. I didn't take a nuxt course i just use the documentation.
 
-# pnpm
-pnpm preview
+## Author
 
-# yarn
-yarn preview
+- Website - [Samuel Hounsou](https://www.github.com/hsu-sam)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@yourusername](https://www.twitter.com/yourusername)
 
-# bun
-bun run preview
-```
+## Acknowledgments
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+I will like to give a big thankds to Frontend Mentor and their for the hardwork they put in and concerns they have for us developers make us tackle real world challenges for developers to build their problem sovling skill and experience build projects. Big Thanks to them.
