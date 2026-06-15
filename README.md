@@ -1,4 +1,4 @@
-# Frontend Mentor - Weather app solution
+# Frontend Mentor - Recipe Finder Website
 
 This is a solution to the [Recipe finder website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/recipe-finder-website--Ui-TZTPxN). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
