@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 
-export interface InputProps {
-  disabled?: boolean;
-  placeholder?: string;
-}
 const props = defineProps<InputProps>();
 
 const model = defineModel();
