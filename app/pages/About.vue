@@ -201,7 +201,7 @@ const philosophies = ref([
           <h2 class="text-preset-2-mobile md:text-preset-2 font-bold">
             Beyond the plate
           </h2>
-          <div class="flex flex-col gap-200 text-neiutral-800">
+          <div class="flex flex-col gap-200 text-neutral-800">
             <p>
               We believe food is a catalyst for community and well-being. By
               sharing approachable recipes, we hope to:

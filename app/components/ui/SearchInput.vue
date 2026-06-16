@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 
-const props = defineProps<InputProps>();
+interface InputProps {
+  placeholder?: string;
+  disabled?: boolean;
+}
 
-const model = defineModel();
+defineProps<InputProps>();
+const model = defineModel<string>();
 </script>
+
 <template>
   <label
     :class="[
@@ -23,4 +28,3 @@ const model = defineModel();
     />
   </label>
 </template>
-ss
