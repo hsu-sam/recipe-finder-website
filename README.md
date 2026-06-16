@@ -24,14 +24,9 @@ This is a solution to the [Recipe finder website challenge on Frontend Mentor](h
 
 Users should be able to:
 
-- Search for weather information by entering a location in the search bar
-- View current weather conditions including temperature, weather icon, and location details
-- See additional weather metrics like "feels like" temperature, humidity percentage, wind speed, and precipitation amounts
-- Browse a 7-day weather forecast with daily high/low temperatures and weather icons
-- View an hourly forecast showing temperature changes throughout the day
-- Switch between different days of the week using the day selector in the hourly forecast section
-- Toggle between Imperial and Metric measurement units via the units dropdown
-- Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown
+- View the home, about, recipes index, and recipe detail pages
+- Search for recipes by name or ingredient
+- Filter recipes by max prep or cook time
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
@@ -51,16 +46,17 @@ Users should be able to:
 - Typescript
 - Tailwind CSS
 - Mobile-first workflow
-- VueJS (https://vuejs.org/) - JS library
+- Nuxt (https://nuxt.com/) - JS library
+- Motion (https://motion.dev) - Animation library
 - Tailwind CSS (https://tailwindcss.com) - For styles
 
 ### What I learned
 
-I learnt how to build websites with nuxt for the first time from config my nuxt website to folder and file structure and organisation files.
+I learnt how to build websites with nuxt for the first time from configure my nuxt website to folder and file structure and organisation files.
 
 ### Continued development
 
-Working with nuxt still not yet configure with it need to learn how build roboust website with cool animation that makes user feel alive like louis vuitton, Google ventures and more.
+Working with nuxt still not yet confident with it need to learn how build roboust website with cool animation that makes user feel alive like louis vuitton, Google ventures and more, SEO, Web Accessibility with nuxt.
 
 ### Useful resources
 
